@@ -1,2 +1,2 @@
 # promethee
-Outils d'exploitations de scans
+Outils d'exploitations de fichiers numérisés
