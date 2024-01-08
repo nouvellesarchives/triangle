@@ -1,4 +1,4 @@
 
-![e-3](https://github.com/nouvellesarchives/triangle/assets/131309787/ace9db29-06db-4a84-a176-9d463d77ca19)
+![triangle](https://github.com/nouvellesarchives/triangle/assets/131309787/c8b13b40-08ad-4a90-bbd4-495843c474e5)
 
-  Outils d'exploitations de fichiers numérisés
+Outils d'exploitations de fichiers numérisés
