@@ -20,8 +20,8 @@ $ pip install -r requirements.txt (si besoin)
 
 #### Mise à jour 
 ```bash
-$ git reset --hard origin/main
 $ git fetch origin
+$ git reset --hard origin/main
 ```
 
 #### Lancement
