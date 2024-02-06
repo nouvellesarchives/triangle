@@ -18,6 +18,12 @@ $ git clone https://github.com/nouvellesarchives/triangle.git
 $ pip install -r requirements.txt (si besoin)
 ```
 
+#### Mise à jour 
+```bash
+$ git reset --hard origin/main
+$ git fetch origin
+```
+
 #### Lancement
 
 ```bash
