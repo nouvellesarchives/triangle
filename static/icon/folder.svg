@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="Groupe_38" data-name="Groupe 38" transform="translate(-230 -17)">
+    <g id="Rectangle_80" data-name="Rectangle 80" transform="translate(230 17)" fill="#fff" stroke="#000" stroke-width="1" opacity="0">
+      <rect width="30" height="30" stroke="none"/>
+      <rect x="0.5" y="0.5" width="29" height="29" fill="none"/>
+    </g>
+    <g id="folder" transform="translate(-144.272 -84.001)">
+      <path id="Tracé_45" data-name="Tracé 45" d="M-2030-81.909v-1.364h19.092v1.364Zm19.092-1.364V-101h1.364v17.727Zm-2.727-15v-1.364h2.727v1.364ZM-2015-99.636V-101h4.091v1.364Z" transform="translate(2409.728 211.546)" opacity="0.3"/>
+      <path id="Tracé_46" data-name="Tracé 46" d="M-2008.181-75.09H-2030v-1.364h20.456V-95.546h-8.183v-1.364h8.183v-1.364h1.364ZM-2015-80.545h-8.183v-1.364H-2015Zm0-2.727h-8.183v-1.364H-2015Zm0-2.727h-13.637v-1.364H-2015Zm0-2.727h-13.637V-90.09H-2015Zm-12.273-4.092h-1.364V-101h8.181v1.364h-6.818Zm16.364-4.091h-1.364v-1.364h1.364Zm-2.727,0H-2015v-1.364h1.364Zm-2.727,0h-1.365v-1.364h1.365Z" transform="translate(2409.728 206.091)"/>
+      <path id="Tracé_47" data-name="Tracé 47" d="M-2028.631-72.363H-2030V-101h17.729v1.364h-1.36v5.454h1.364v1.364h-1.364v-1.364H-2015v-5.454h-13.633v25.91h1.36v1.364Zm20.453,0v-1.364h1.364v1.364Zm-15-4.091v-1.364h1.364v1.364Zm0-2.727v-1.364h1.364v1.364Zm-1.365-9.546v-6.818h6.819v6.818Zm16.363-4.091v-2.727h-1.361v-1.364h-1.365v-1.364h-1.362v-1.365h1.362v1.365h1.365v1.364h1.361v1.364h1.366v2.727Zm-2.726,0v-1.364h1.365v1.364Z" transform="translate(2406.998 202.001)" opacity="0.7"/>
+    </g>
+  </g>
+</svg>

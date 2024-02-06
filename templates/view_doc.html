@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="{{ url_for('static', filename='js/utils/state.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/viewDoc.js') }}"></script>
+  <link href="{{ url_for('static', filename='css/global.css') }}" rel="stylesheet">
+</head>
+
+<body>
+  <nav>
+    <div style="
+        display: flex; 
+        align-items: center; 
+        background-color: white; 
+        padding: 0.5rem 0.5rem 0.5rem 0rem;
+        ">
+      <a href="/">Fichiers</a>
+      <span style="margin: 0rem 0.5rem;">/</span>
+      <p id="fname" style="
+          max-width: 334.6px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          ">{{ file }}</p>
+    </div>
+    <div style="
+        display: flex; 
+        background-color: white; 
+        padding: 0.5rem 0rem 0.5rem 0.5rem;
+        align-items: center;
+       flex-direction: column; 
+        ">
+      <div>
+        <button class="button" onclick="toggleColumns()">
+          <span id="columnCount">3</span>
+          <span id="columnInd">Colones</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div id="prevGrid" class="prevGrid">
+      {% for image in images %}
+      <img id="p-{{ image.page }}" onclick="selectPrev({{ image }})" src="data:image/webp;base64,{{ image.data }}"
+        class="prevCard">
+      {% endfor %}
+    </div>
+
+    <div class="bottomNav">
+      <div style="display: flex; flex-direction: column;">
+        <span style="width: 100%; margin: 0rem 0rem 0.5rem 0rem;"><button id="btn-edit" onclick="startEditing()"
+            class="button"
+            style="width: 100%; display: none; color: white; background-color: green; border: green;">Éditer</button></span>
+        <span>
+          <button id="btn-sm" class="button" style="width: 7rem;" onclick="toggleSelectionMode()">Sélection</button>
+          <span
+            style="display: none; line-height: 1; margin: 0rem 0rem 0rem 0.4rem; padding: 0.4rem; color: blue; background-color: white; border: 1px solid blue;"
+            id="selectionLenght">
+            0
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div id="imageModal">
+      <div id="modalContent">
+
+        <nav style="flex-direction: row-reverse;">
+          <button class="btn-option" style="
+              margin: 0.5rem 0rem 0.5rem 0.5rem; 
+              -webkit-app-region: no-drag;
+              border: 1px solid black; 
+              cursor: pointer;" onclick="closeModal()">X</button>
+        </nav>
+
+        <div>
+          <img id="modalImage" src="">
+        </div>
+      </div>
+    </div>
+
+  </main>
+</body>
+<script>
+  let images = {{images | tojson}};
+</script>
+
+</html>

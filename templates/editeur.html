@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{{ url_for('static', filename='css/global.css') }}" rel="stylesheet">
+  <script src="{{ url_for('static', filename='js/editor.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/utils/state.js') }}"></script>
+  <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+</head>
+
+<body>
+
+  <nav>
+    <div style="display: flex; align-items: center; background-color: white; padding: 0.5rem 0.5rem 0.5rem 0rem;">
+      <a href="/">Fichiers</a>
+      <span style="margin: 0rem 0.5rem;">/</span>
+      <a id="fname" href="/document/{{ file }}" style="
+          max-width: 150px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          ">{{ file }}</a>
+      <span style="margin: 0rem 0.5rem;">/</span>
+      <p>Éditeur</p>
+    </div>
+  </nav>
+
+  <main id="app">
+
+    <div id="inter" style="display: grid; grid-template-columns: repeat(12, 1fr); height: 100%; grid-gap: 1rem;">
+
+      <div style="grid-column: 1 / 4; flex-direction: column; grid-gap: 1rem; display: flex;">
+        <div id="prevBar">
+          {% for prev in previews %}
+          <img id="{{ prev.page }}" onclick="selectPage({{ prev }})" src="data:image/webp;base64,{{ prev.data }}"
+            class="prevCard">
+          {% endfor %}
+        </div>
+        <div>
+          <button id="btn-extract" onclick="extraction()" style="width: 100%;" class="button" disabled>Extraire</button>
+        </div>
+      </div>
+
+      <div id="canvasZone" style="grid-column: 4 / 10;">
+        <div id="canvasContainer" style="display: flex; justify-content: center; width: 100%; height: 100%;">
+        </div>
+      </div>
+
+      <div style="display: flex; grid-gap: 1rem; flex-direction: column; grid-column: 10 / 13; z-index: 2;">
+        <span>Extractions</span>
+        <div id="extractedPrevs"></div>
+        <span>Pre-export</span>
+        <div id="peInter">
+          <div id="preExport"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="editModal" class="editModal">
+      <nav style="flex-direction: row-reverse;">
+        <div style="
+        display: flex; 
+        padding: 0.5rem 0rem 0.5rem 0.5rem;
+        align-items: center;
+       flex-direction: column; 
+        ">
+          <div>
+            <button class="btn-option" style="
+                margin: 0.5rem 0rem 0.5rem 0.5rem; 
+              -webkit-app-region: no-drag;
+              border: 1px solid black; 
+              cursor: pointer;" onclick="cancelEdit()">X</button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="bottomNav">
+        <div style="display: flex; flex-direction: column; padding: 0.5rem; gap: 0.5rem;">
+
+          <span style="
+              display: flex; flex-direction: column; 
+              justify-content: center; align-items: center; 
+              grid-gap: 0.5rem; position: absolute; padding: 0.5rem; 
+              background-color: white; bottom: 0; right: 0; margin: 11px;">
+
+            <img style="width: 2.6rem;" src="/static/icon/del.svg" alt="">
+
+            <span style="display: flex;">
+              <button id="btn-on" class="btn-option on" style="border: 1px solid black;"
+                onclick="toggleLight()">O</button>
+              <button id="btn-off" class="btn-option" style="border: 1px solid black;"
+                onclick="toggleLight()">I</button>
+            </span>
+
+          </span>
+
+          <span id="adjustCommands" style="display: flex; flex-direction: column;">
+
+            <span style="display: flex; grid-gap: 0.5rem; padding: 0.5rem; 
+              background-color: white; padding: 0.5rem; justify-content: center;">
+              <button id="btn-crop" class="btn-option" onclick="adjustToggleCtrl('crop')">
+                <img id="cropIcon" style="height: 1.5rem;" src="/static/icon/crop.svg" alt="">
+              </button>
+            </span>
+
+            <span id="savingUI" style="background-color: white; display: flex; grid-gap: 0.5rem;">
+            </span>
+
+          </span>
+        </div>
+      </div>
+
+      <div id="editModalContent">
+        <div id="editLoader" style="display: none;">
+          <div id="editLoader1" style="display: none;">
+            <span>
+              <p style="display: flex; padding: 0.5rem; color: green; background-color: white;">Enregistrement…</p>
+            </span>
+          </div>
+          <div id="editLoader2" style="display: flex; flex-direction: column; align-items: center;">
+            <span>
+              <p style="display: flex; padding: 0.5rem; color: green; background-color: white;">
+                Les modifications ont bien été prisent en compte !
+              </p>
+            </span>
+            <span>
+              <p
+                style="display: flex; align-items: center; padding: 0.5rem; color: green; text-decoration: underline; background-color: white;">
+                Extractions
+                <span class="btn-option" style="height: 1rem; width: 1rem; margin-left: 0.2rem;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="8.187" height="8.187" viewBox="0 0 8.187 8.187">
+                    <path id="Tracé_50" data-name="Tracé 50"
+                      d="M-2278.693-6.769l6.213-6.213h-6.2v-.449h6.965v6.965h-.449v-6.2l-6.213,6.213Z"
+                      transform="translate(2279.4 13.931)" fill="green" stroke="green" stroke-width="1" />
+                  </svg>
+                </span>
+              </p>
+            </span>
+          </div>
+        </div>
+
+        <div id="imgContainer">
+          <img id="prevImg" style="max-height: 50vh; min-height: 30vh;" src="">
+        </div>
+
+      </div>
+    </div>
+  </main>
+</body>
+<script>
+  let fname = "{{file}}";
+  let previews = {{previews | tojson}};
+</script>
+
+</html>

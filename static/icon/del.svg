@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="59.072" height="21.586" viewBox="0 0 59.072 21.586">
+  <g id="Groupe_46" data-name="Groupe 46" transform="translate(-32.37 -163.315)">
+    <g id="Groupe_27" data-name="Groupe 27" transform="translate(32.37 174.143)">
+      <path id="Tracé_37" data-name="Tracé 37" d="M2115.625,171h20.454" transform="translate(-2115.625 -171)" fill="none" stroke="#000" stroke-width="1"/>
+      <path id="Tracé_38" data-name="Tracé 38" d="M2115.625,171h21.838" transform="translate(-2078.391 -171)" fill="none" stroke="#000" stroke-width="1"/>
+    </g>
+    <g id="Polygone_2" data-name="Polygone 2" transform="translate(71.5 163.315) rotate(90)" fill="none">
+      <path d="M10.793,0,21.586,19.187H0Z" stroke="none"/>
+      <path d="M 10.79284763336182 2.039737701416016 L 1.709848403930664 18.18728256225586 L 19.87584686279297 18.18728256225586 L 10.79284763336182 2.039737701416016 M 10.79284763336182 3.814697265625e-06 L 21.58569717407227 19.18728256225586 L -1.9073486328125e-06 19.18728256225586 L 10.79284763336182 3.814697265625e-06 Z" stroke="none" fill="#000"/>
+    </g>
+    <path id="Tracé_34" data-name="Tracé 34" d="M2136.289,162v21.586" transform="translate(-2064.443 1.315)" fill="none" stroke="#000" stroke-width="1"/>
+  </g>
+</svg>

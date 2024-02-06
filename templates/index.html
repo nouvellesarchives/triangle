@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/css/global.css" rel="stylesheet">
+  <script src="/static/js/utils/state.js"></script>
+  <script src="/static/js/lib/socket-io.js"></script>
+</head>
+
+<body>
+
+  <div id="loader" style="display: none; 
+    position: fixed;
+    align-items: center; 
+    justify-content: center; 
+    width: 100%; height: 100%; 
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: 999;">
+    <div>
+      <span>
+        <div class="loader">
+          <span class="sqr"></span>
+          <span class="sqr"></span>
+          <span class="sqr"></span>
+          <span class="sqr"></span>
+        </div>
+      </span>
+      <span>
+        <p style="margin: 1rem 1rem 0rem 0rem;">Extraction des pages...</p>
+      </span>
+    </div>
+  </div>
+
+  <nav>
+    <div style="display: flex; align-items: center; background-color: white; padding: 0.5rem 0.5rem 0.5rem 0rem;">
+      Fichiers
+    </div>
+    <div style="
+        display: flex; 
+        background-color: white; 
+        padding: 0.5rem 0rem 0.5rem 0.5rem;
+        align-items: center;
+       flex-direction: column; 
+        ">
+      <div>
+        <button class="button" style="min-width: 5rem;" onclick="toggleDispayMode()">
+          <span id="v-displayMode">
+            Rangées
+          </span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <ul id="filesContainer" class="filesContainer row">
+      {% for file in files %}
+      <li>
+        <a onclick="load()" style="text-decoration: none;" href="http://127.0.0.1:5000/document/{{ file }}">
+          <img src="/static/icon/folder.svg" style="height: 1rem;" alt="">
+          <p>{{ file }}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </main>
+</body>
+<script>
+  let filesDisplayOptions = ["Rangées", "Grille"];
+  let currentOptionIndex = 0;
+  const socket = io();
+
+  socket.on('updateList', function (obj) {
+    let list = document.getElementById('filesContainer');
+    list.innerHTML = "";
+
+    for (let i = 0; i < obj.files.length; i++) {
+      let li = document.createElement('li');
+      let a = document.createElement('a');
+      a.setAttribute('onclick', "load()");
+      a.style.textDecoration = "none";
+      a.href = `http://127.0.0.1:5000/document/${obj.files[i]}`;
+
+      let img = document.createElement('img');
+      img.src = "/static/icon/folder.svg";
+      img.style.height = "1rem";
+
+      let p = document.createElement('p');
+      p.textContent = obj.files[i];
+
+      a.appendChild(img);
+      a.appendChild(p);
+      li.appendChild(a);
+      list.appendChild(li);
+    }
+  });
+
+  function load() {
+    let loading = false
+    const loader = document.getElementById('loader');
+    if (!loading) {
+      loader.style.display = "flex"
+    } else {
+      loader.style.display = "none"
+    }
+  }
+
+  function updateView() {
+    const c = document.getElementById('filesContainer');
+    const dMode = filesDisplayOptions[currentOptionIndex];
+    document.getElementById('v-displayMode').innerText = dMode;
+    c.classList.toggle('row');
+    c.classList.toggle('grid');
+  }
+
+  function toggleDispayMode() {
+    currentOptionIndex = (currentOptionIndex + 1) % filesDisplayOptions.length;
+    updateView();
+  }
+</script>
+
+</html>
