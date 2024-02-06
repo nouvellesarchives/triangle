@@ -36,6 +36,7 @@ document.addEventListener("keydown", function(e) {
 });
 
 async function startEditing() {
+  load();
 
   const fname = document.getElementById('fname').textContent;
 
