@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="{{ url_for('static', filename='js/utils/state.js') }}"></script>
   <script src="{{ url_for('static', filename='js/viewDoc.js') }}"></script>
   <link href="{{ url_for('static', filename='css/global.css') }}" rel="stylesheet">
 </head>
@@ -28,7 +27,7 @@
         </div>
       </span>
       <span>
-        <p style="margin: 1rem 1rem 0rem 0rem;">Préparation de l'éditeur...</p>
+        <p style="margin: 1rem 1rem 0rem 0rem;">Preparing the editor...</p>
       </span>
     </div>
   </div>
@@ -40,7 +39,7 @@
         background-color: white; 
         padding: 0.5rem 0.5rem 0.5rem 0rem;
         ">
-      <a href="/">Fichiers</a>
+      <a href="/">Files</a>
       <span style="margin: 0rem 0.5rem;">/</span>
       <p id="fname" style="
           max-width: 334.6px;
@@ -59,7 +58,7 @@
       <div>
         <button class="button" onclick="toggleColumns()">
           <span id="columnCount">3</span>
-          <span id="columnInd">Colones</span>
+          <span id="columnInd">columns</span>
         </button>
       </div>
     </div>
@@ -75,9 +74,9 @@
     <div class="bottomNav">
       <div style="display: flex; flex-direction: column; gap: 0.5rem;">
         <span style="width: 100%;"><button id="btn-edit" onclick="startEditing()" class="button"
-            style="width: 100%; display: none; color: white; background-color: green; border: green;">Éditer</button></span>
+            style="width: 100%; display: none; color: white; background-color: green; border: green;">Edit</button></span>
         <span style="display: flex; gap: 0.5rem;">
-          <button id="btn-sm" class="button" style="width: 7rem;" onclick="toggleSelectionMode()">Sélection</button>
+          <button id="btn-sm" class="button" style="width: 7rem;" onclick="toggleSelectionMode()">Selection</button>
           <span style="display: none; padding: 0.4rem; color: blue; background-color: white; border: 1px solid blue;"
             id="selectionLenght">0</span>
         </span>

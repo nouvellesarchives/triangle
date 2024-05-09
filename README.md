@@ -1,9 +1,9 @@
 
 ![triangle](https://github.com/nouvellesarchives/triangle/assets/131309787/c8b13b40-08ad-4a90-bbd4-495843c474e5)
 
-Outils d'exploitations de fichiers numérisés
+Tools for processing digitised files
 
-#### Dépendances
+#### Dependencies
 - [Flask](https://pypi.org/project/Flask/)
 - [flask-session](https://pypi.org/project/Flask-Session/)
 - [flask-socketio](https://pypi.org/project/Flask-SocketIO/)
@@ -15,16 +15,16 @@ Outils d'exploitations de fichiers numérisés
 #### Installation
 ```bash
 $ git clone https://github.com/nouvellesarchives/triangle.git
-$ pip install -r requirements.txt (si besoin)
+$ pip install -r requirements.txt (if required)
 ```
 
-#### Mise à jour 
+#### Updating 
 ```bash
 $ git fetch origin
 $ git reset --hard origin/main
 ```
 
-#### Lancement
+#### Start
 
 ```bash
 $ python triangle.py (-g/gui : false, true, auto)

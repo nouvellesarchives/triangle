@@ -38,7 +38,7 @@ if not os.path.exists(CONFIG_FILE):
         },
         "interface": {
             "lang": {
-                "langs": ["FR"],
+                "langs": ["EN"],
                 "current": 0,
                 "default": 0
             },
@@ -89,10 +89,10 @@ print("""
       """)
 
 print(f'▲ Version {configData["info"]["version"]} pour {configData["info"]["platform"]}')
-print(f'▲ Langue par défaut :           {configData["interface"]["lang"]["langs"][configData["interface"]["lang"]["default"]]}')
-print(f"▲ Dossier d'import par défaut : {configData['files']['input']['default']}")
-print(f"▲ Dossier d'export par défaut : {configData['files']['export']['default']}")
-print(f"▲ Adresse par défault :         {SERVER_ADDR}")
+print(f'▲ Default lang :            {configData["interface"]["lang"]["langs"][configData["interface"]["lang"]["default"]]}')
+print(f"▲ Default Import folder :   {configData['files']['input']['default']}")
+print(f"▲ Default Export folder :   {configData['files']['export']['default']}")
+print(f"▲ Default Server Adress :   {SERVER_ADDR}")
 print("    ")
 
 Session(app)
@@ -297,7 +297,7 @@ def viewFile(file):
                            images=images, 
                            page=page)
 
-@app.route('/editeur', methods=['POST'])
+@app.route('/editor', methods=['POST'])
 def editeurREQ():
 
     data = request.json
@@ -363,7 +363,7 @@ def export():
 
     request.close()
 
-    print("Exporté à : {}".format(zipPath))
+    print("Exported at : {}".format(zipPath))
 
     return jsonify({
         "fname": fname,
@@ -375,13 +375,13 @@ def export():
         "exportPath": zipPath,
         }) 
 
-@app.route('/editeur', methods=['GET'])
+@app.route('/editor', methods=['GET'])
 def editeur():
 
     fname = session.get('file', '')
     selection = session.get('selection', [])
 
-    return render_template("editeur.html", file=fname, previews=selection)
+    return render_template("editor.html", file=fname, previews=selection)
 
 @app.route('/extract', methods=['POST'])
 def process():
@@ -425,7 +425,7 @@ if __name__ == '__main__':
     )
     obserer.start()
     if GUI_AUTO or args.gui == "true":
-        print(f"Lancement de l'interface...")
+        print(f"Starting GUI...")
         cmd = ["open", "./gui/mac/triangle.app", "--args", "--url=http://127.0.0.1:5000"] 
         subprocess.call(cmd)
     app.run(debug=False)

@@ -71,8 +71,6 @@ function preExport() {
   exportList.push(newExport)
   updatePE(data, id)
   exportBtnDisplay();
-  console.log('ready to be exported', newExport.id)
-  console.log('Liste MAJ apres extract', exportList)
 }
 
 function updatePE(data, id) {
@@ -154,12 +152,12 @@ async function saveChanges(step, replace) {
       b.style.backgroundColor = 'blue';
       b.style.border = '1px solid blue';
       b.setAttribute("onclick", "saveChanges(1, true)");
-      b.textContent = "Remplacer";
+      b.textContent = "Replace";
 
       b2.className = 'button';
       b2.style.width = '7rem';
       b2.setAttribute("onclick", "saveChanges(1, false)");
-      b2.textContent = "Concerver";
+      b2.textContent = "Keep both";
 
       s.appendChild(b)
       s.appendChild(b2)
@@ -257,7 +255,7 @@ function editSavingProcess(step) {
 
   if (step === 1) {
 
-    p.textContent = 'Enregistrement…';
+    p.textContent = 'Saving…';
     p.style.color = 'green';
     p.style.padding = '0.5rem';
     p.style.backgroundColor = 'white';
@@ -266,7 +264,7 @@ function editSavingProcess(step) {
 
   } else if (step === 2) {
 
-    p.textContent = 'Les modifications ont bien été prisent en compte !';
+    p.textContent = 'The changes have been successfully applied!';
     p.style.display = 'flex';
     p.style.padding = '0.5rem';
     p.style.color = 'green';
@@ -300,7 +298,7 @@ function cropSavingCtrlDis(display, arg) {
     b.style.backgroundColor = 'blue';
     b.style.border = '1px solid blue';
     b.setAttribute("onclick", "saveChanges(0, false)");
-    b.textContent = "Enregistrer";
+    b.textContent = "Save";
 
     b2.className = 'button';
     b2.style.width = '7rem';
@@ -661,8 +659,6 @@ function supressInfoCard(i) {
   if (card) {
     container.removeChild(card);
   }
-
-  console.log(`Carte ${i} suprimee`)
 }
 
 async function openFolder(path, options) {
@@ -716,12 +712,12 @@ function addEiCard(step, path, id, nb, res, format, profile) {
 
     if (nb >= 2) {
       msg = [
-        `Nous avons rangé vos ${nb} images dans une`,
+        `We've put your ${nb} images in an`,
         path,
       ];
     } else if (nb < 2) {
       msg = [
-        `Nous avons rangé votre image dans une`,
+        `We've put your image in an`,
         path,
       ];
     }
@@ -808,7 +804,7 @@ function addEiCard(step, path, id, nb, res, format, profile) {
 
     const s2 = document.createElement("span");
 
-    s2.textContent = `Exportation de ${nb} ${i}`;
+    s2.textContent = `Exporting of ${nb} ${i}`;
 
     s.appendChild(l);
     s.appendChild(s2);
@@ -867,7 +863,7 @@ async function exportation() {
     e.profile,
   );
 
-  const resp = await fetch('http://127.0.0.1:5000/editeur/export', {
+  const resp = await fetch('http://127.0.0.1:5000/editor/export', {
     method: 'POST',
     headers: {
       "Content-Type": 'application/json',

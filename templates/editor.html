@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="{{ url_for('static', filename='css/global.css') }}" rel="stylesheet">
   <script src="{{ url_for('static', filename='js/editor.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/utils/state.js') }}"></script>
   <script src="https://unpkg.com/konva@9/konva.min.js"></script>
 </head>
 
@@ -14,7 +13,7 @@
 
   <nav>
     <div style="display: flex; align-items: center; background-color: white; padding: 0.5rem 0.5rem 0.5rem 0rem;">
-      <a href="/">Fichiers</a>
+      <a href="/">Files</a>
       <span style="margin: 0rem 0.5rem;">/</span>
       <a id="fname" href="/document/{{ file }}" style="
           max-width: 150px;
@@ -23,7 +22,7 @@
           white-space: nowrap;
           ">{{ file }}</a>
       <span style="margin: 0rem 0.5rem;">/</span>
-      <p>Éditeur</p>
+      <p>Editor</p>
     </div>
   </nav>
 
@@ -39,7 +38,7 @@
           {% endfor %}
         </div>
         <div>
-          <button id="btn-extract" onclick="extraction()" style="width: 100%;" class="button" disabled>Extraire</button>
+          <button id="btn-extract" onclick="extraction()" style="width: 100%;" class="button" disabled>Extract</button>
         </div>
       </div>
 
@@ -49,7 +48,7 @@
       </div>
 
       <div style="display: flex; grid-gap: 1rem; flex-direction: column; grid-column: 10 / 13; z-index: 2;">
-        <span>Extractions</span>
+        <span>Artefacts</span>
         <div id="extractedPrevs"></div>
         <span>Pre-export</span>
         <div id="peInter">
@@ -117,13 +116,13 @@
         <div id="editLoader" style="display: none;">
           <div id="editLoader1" style="display: none;">
             <span>
-              <p style="display: flex; padding: 0.5rem; color: green; background-color: white;">Enregistrement…</p>
+              <p style="display: flex; padding: 0.5rem; color: green; background-color: white;">Saving…</p>
             </span>
           </div>
           <div id="editLoader2" style="display: flex; flex-direction: column; align-items: center;">
             <span>
               <p style="display: flex; padding: 0.5rem; color: green; background-color: white;">
-                Les modifications ont bien été prisent en compte !
+                The changes have been successfully applied!
               </p>
             </span>
             <span>

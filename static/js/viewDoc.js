@@ -45,7 +45,7 @@ async function startEditing() {
     "selection": selection,
   })
 
-  const req = await fetch('/editeur', {
+  const req = await fetch('/editor', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ async function startEditing() {
   })
 
   if (req.ok) {
-    window.location.href = "/editeur"
+    window.location.href = "/editor"
   } else {
     console.error("Erreur status :", req.status);
   }
@@ -121,9 +121,9 @@ function updateGrid() {
   grid.style.gridTemplateColumns = `repeat(${columnCount}, 1fr)`;
   document.getElementById('columnCount').innerText = columnCount;
   if (columnCount > 1) {
-    document.getElementById('columnInd').innerText = "colones";
+    document.getElementById('columnInd').innerText = "columns";
   } else {
-    document.getElementById('columnInd').innerText = "colone";
+    document.getElementById('columnInd').innerText = "column";
   }
 }
 

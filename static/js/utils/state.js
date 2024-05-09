@@ -16,6 +16,5 @@ console.log("Global state", global);
 
 function state_openSlideShow() {
   global.slideShowIsOpen = !global.slideShowIsOpen
-  console.log(global.slideShowIsOpen)
   document.body.classList.toggle("sIsOpen");
 }
