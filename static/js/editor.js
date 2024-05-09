@@ -626,14 +626,14 @@ function startExporting() {
   cancelBTN.setAttribute('onclick', "cancelExporting()");
   cancelBTN.style.width = '100%';
   cancelBTN.style.minWidth = "0";
-  cancelBTN.textContent = 'Annuler';
+  cancelBTN.textContent = 'Cancel';
 
   const exportBTN = document.createElement('button');
   exportBTN.className = 'button green';
   exportBTN.setAttribute('onclick', "exportation()");
   exportBTN.style.minWidth = "0";
   exportBTN.style.width = '100%';
-  exportBTN.textContent = 'Exporter';
+  exportBTN.textContent = 'Export';
 
   resBTN.appendChild(resSPAN);
   resBTN.appendChild(mSPAN);
