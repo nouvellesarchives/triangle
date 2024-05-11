@@ -147,7 +147,7 @@ async function saveChanges(step, replace) {
       s.style.display = 'flex';
       s.style.gap = '0.5rem';
       b.className = 'button';
-      b.style.width = '7rem';
+      b.style.width = '8rem';
       b.style.color = 'white';
       b.style.backgroundColor = 'blue';
       b.style.border = '1px solid blue';
@@ -155,7 +155,7 @@ async function saveChanges(step, replace) {
       b.textContent = "Replace";
 
       b2.className = 'button';
-      b2.style.width = '7rem';
+      b2.style.width = '8rem';
       b2.setAttribute("onclick", "saveChanges(1, false)");
       b2.textContent = "Keep both";
 
