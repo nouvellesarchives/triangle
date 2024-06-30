@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, json, session
 import os, cv2, fitz, base64, zipfile, platform, subprocess,argparse 
+import rembg
 from PIL import Image
 import numpy as np
 from io import BytesIO
@@ -239,6 +240,7 @@ def ndArraytoB64(array, format):
     imgPIL.save(buff, format=format.upper())
     return base64.b64encode(buff.getvalue()).decode()
 
+
 @app.route('/folder', methods=['POST'])
 def openFolderPOST():
 
@@ -320,7 +322,7 @@ def editeurREQ():
 
     return redirect(url_for('editeur'))
 
-@app.route('/editeur/export', methods=['POST'])
+@app.route('/editor/export', methods=['POST'])
 def export():
 
     data = request.json
@@ -414,6 +416,19 @@ def process():
         'data': warpedB64,
         'points': points,
         }) 
+
+@app.route('/remove-bg/preview', methods=['POST'])
+def handleRemoveBG():
+    resp = request.json
+
+    data = resp.get('data')
+    imgArray = b64toNdArray(data)
+    output = rembg.remove(imgArray)
+    img = ndArraytoB64(output, "webp")
+
+    return jsonify({
+        "output": img,
+        })  
 
 if __name__ == '__main__':
     event_handler = FileHandler()
